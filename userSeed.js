@@ -1,19 +1,22 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+import User from './models/User.js'
+import bcrypt from 'bcrypt'
+import connectToDatabase from './db/db.js'
 
-dotenv.config(); // Load environment variables from .env file
+const userRegister = async () => {
+    connectToDatabase()
+   try {
+    const hashPassword = await bcrypt.hash("admin", 10)
+        const newUser = new User({
+            name: "Admin",
+            email: "admin@gmail.com",
+            password: hashPassword ,
+            role: "admin"
 
-const connectToDatabase = async () => {
-    try {
-        await mongoose.connect(process.env.MONGODB_URL, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        console.log("✅ MongoDB Connected Successfully");
-    } catch (error) {
-        console.error(" MongoDB Connection Failed:", error.message);
-        process.exit(1);
-    }
-};
+        })
+        await newUser.save()
+   } catch(error){
+    console.log(error)
+   }
+}
 
-export default connectToDatabase;
+userRegister();
