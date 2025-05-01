@@ -26,6 +26,6 @@ app.use('/api/leave', leaveRouter)
 app.use('/api/setting', settingRouter)
 app.use('/api/dashboard', dashboardRouter)
 
-app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT || 5000, "0.0.0.0", ()=>{
     console.log(`server is Running on port ${process.env.PORT}`)
 })
