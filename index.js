@@ -1,6 +1,5 @@
 import express from 'express'
 import cors from 'cors'
-import serverless from 'serverless-http'
 import authRouter from './routes/auth.js'
 import departmentRouter from './routes/department.js'
 import employeeRouter from './routes/employee.js'
@@ -14,8 +13,7 @@ const app = express();
 
 connectToDatabase()
 app.use(cors({
-    origin:  ["https://employee-frontend-juua.vercel.app"],
-    methods: ['GET', 'POST'],
+    origin:  "https://employee-frontend-juua.vercel.app", 
     credentials: true,
 }))
 app.use(express.json())
@@ -28,8 +26,6 @@ app.use('/api/leave', leaveRouter)
 app.use('/api/setting', settingRouter)
 app.use('/api/dashboard', dashboardRouter)
 
-/*app.listen(process.env.PORT, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log(`server is Running on port ${process.env.PORT}`)
-})*/
-
-export default serverless(app);
+})
