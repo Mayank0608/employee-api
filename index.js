@@ -14,7 +14,7 @@ const app = express();
 
 connectToDatabase()
 app.use(cors({
-    origin:  "https://employee-frontend-juua.vercel.app", 
+    origin:  ["https://employee-frontend-juua.vercel.app", "http://localhost:3000"],
     credentials: true,
 }))
 app.use(express.json())
