@@ -9,9 +9,9 @@ import settingRouter from './routes/setting.js'
 import  dashboardRouter from './routes/dashboard.js'
 import connectToDatabase from './db/db.js'
 
+const app = express();
 
 connectToDatabase()
-const app = express()
 app.use(cors({
     origin:  "https://employee-frontend-juua.vercel.app", 
     credentials: true,
