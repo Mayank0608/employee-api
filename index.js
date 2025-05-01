@@ -32,4 +32,4 @@ app.listen(process.env.PORT, ()=>{
     console.log(`server is Running on port ${process.env.PORT}`)
 })
 
-export const handler = serverless(app)
+export default handler = serverless(app)
