@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import serverless from 'serverless-http'
 import authRouter from './routes/auth.js'
 import departmentRouter from './routes/department.js'
 import employeeRouter from './routes/employee.js'
@@ -29,3 +30,5 @@ app.use('/api/dashboard', dashboardRouter)
 app.listen(process.env.PORT, ()=>{
     console.log(`server is Running on port ${process.env.PORT}`)
 })
+
+export const handler = serverless(app)
